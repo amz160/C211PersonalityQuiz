@@ -17,10 +17,9 @@ public class PersonalityAssesmentApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        // Create a new PersonalityAssessment object
-        PersonalityAssessment assessment = new PersonalityAssessment();
 
-        // Create a welcome layout with intro and start button
+// Create a new PersonalityAssessment object
+                // Create a welcome layout with intro and start button
         Pane welcomePane = new Pane();
         Label introLabel = new Label("Welcome to the Personality Assessment Quiz!");
         Button startButton = new Button("Take the Quiz");

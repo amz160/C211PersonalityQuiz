@@ -12,7 +12,7 @@ package com.mycompany.personalityquiz;
 public enum PersonalityTrait {
     OPENNESS_TO_EXPERIENCE("Openness to Experience", "Description for openness to experience"),
     INTROVERSION_EXTROVERSION("Introversion/Extroversion", "Description for introversion/extroversion");
-
+    
     private final String name;
     private final String description;
 
