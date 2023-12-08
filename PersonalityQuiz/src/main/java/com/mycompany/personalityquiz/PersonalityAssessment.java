@@ -48,9 +48,34 @@ public class PersonalityAssessment {
 
     public String calculatePersonalityType() {
         // Analyze recorded answers and calculate personality type based on associated traits
-        // ... Implement logic to identify dominant personality type ...
+        // Analyze recorded answers and calculate personality type based on associated traits
+        Map<String, Integer> traitCounts = new HashMap<>();
 
-        // Return the calculated personality type
-        return "Personality type"; // Replace with actual calculation result
-    }
+        for (TestResult result : takenAssessment) {
+            // String traitName = result.getQuestion().getAssociatedTrait();
+            // traitCounts.put(traitName, traitCounts.getOrDefault(traitName, 0) + 1);
+        }
+
+        // Find the trait with the highest count
+        int maxCount = 0;
+        String dominantTrait = null;
+
+        for (Map.Entry<String, Integer> entry : traitCounts.entrySet()) {
+            if (entry.getValue() > maxCount) {
+                maxCount = entry.getValue();
+                dominantTrait = entry.getKey();
+            }
+        }
+
+        // Look up the personality type associated with the dominant trait
+        if (dominantTrait != null) {
+            PersonalityTrait personalityTrait = personalityTypes.get(dominantTrait);
+            if (personalityTrait != null) {
+                return personalityTrait.getName();
+            }
+        }
+
+        // Return a default value if no dominant trait is found
+        return "Unknown Personality Type";
+        }
 }
