@@ -3,7 +3,6 @@ com\mycompany\personalityquiz\Questions.class
 module-info.class
 com\mycompany\personalityquiz\Personality.class
 com\mycompany\personalityquiz\PersonalityTrait.class
-com\mycompany\personalityquiz\PersonalityAssessmentGUI.class
 com\mycompany\personalityquiz\PersonalityAssessment.class
 com\mycompany\personalityquiz\PersonalityAssesmentApp.class
 com\mycompany\personalityquiz\Question.class
