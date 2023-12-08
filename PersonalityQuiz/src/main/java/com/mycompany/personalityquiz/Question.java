@@ -24,15 +24,11 @@ public class Question {
         this.associatedTrait = associatedTrait;
     }
 
-    public String getQuestionText()
- 
-{
+    public String getQuestionText(){
         return questionText;
     }
 
-    public List<String> getAnswerOptions()
- 
-{
+    public List<String> getAnswerOptions(){
         return answerOptions;
     }
 

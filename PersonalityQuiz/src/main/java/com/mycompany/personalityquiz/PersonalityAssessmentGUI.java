@@ -5,15 +5,14 @@
 package com.mycompany.personalityquiz;
 
 import javafx.application.Platform;
-import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import java.util.List;
 import javafx.scene.layout.GridPane;
+
+import java.util.List;
 
 
 /**
@@ -32,10 +31,10 @@ public class PersonalityAssessmentGUI extends Parent{
 
     private int currentQuestionIndex; // Track current question
 
-    public PersonalityAssessmentGUI(PersonalityAssessment assessment) {
-        this.assessment = assessment;
-        this.questions = assessment.getQuestions(); // Get questions from assessment
-        this.currentQuestionIndex = 0; // Start with first question
+    public PersonalityAssessmentGUI() {
+        this.assessment = new PersonalityAssessment();
+        this.questions = new Questions().createSampleQuestions();
+        this.currentQuestionIndex = 0;
 
         // Initialize GUI components
         questionLabel = new Label(); // Display question text
@@ -45,8 +44,8 @@ public class PersonalityAssessmentGUI extends Parent{
         resultsTextArea.setEditable(false); // Make results area read-only
 
         // Set layout and add components
+        // Set layout and add components
         GridPane layout = new GridPane();
-        layout.setPadding(new Insets(10));
         layout.setHgap(10);
         layout.setVgap(10);
 
@@ -54,6 +53,12 @@ public class PersonalityAssessmentGUI extends Parent{
         layout.add(answerOptionsComboBox, 1, 0);
         layout.add(submitButton, 2, 0);
         layout.add(resultsTextArea, 0, 1, 3, 1);
+        
+        // Set initial content
+        resultsTextArea.setText(""); // Clear any existing text
+        
+        // Set initial focus on answer options combo box
+        answerOptionsComboBox.requestFocus();
 
         // Add action listener to submit button
         submitButton.setOnAction(event -> {
@@ -75,27 +80,20 @@ public class PersonalityAssessmentGUI extends Parent{
 
         // Display the first question
         Platform.runLater(() -> displayNextQuestion());
+       
     }
 
     private void displayNextQuestion() {
-        // Get current question
         Question currentQuestion = questions.get(currentQuestionIndex);
-
-        // Update question label with text
         questionLabel.setText(currentQuestion.getQuestionText());
 
-        // Clear and update answer options combo box
         answerOptionsComboBox.getItems().clear();
-        for (String answerOption : currentQuestion.getAnswerOptions()) {
-            answerOptionsComboBox.getItems().add(answerOption);
-        }
+        answerOptionsComboBox.getItems().addAll(currentQuestion.getAnswerOptions());
     }
 
     private void calculatePersonalityTypeAndDisplayResults() {
-        // Calculate personality type based on recorded answers
         String personalityType = assessment.calculatePersonalityType();
-
-        // Display results in text area
+        resultsTextArea.clear();
         resultsTextArea.setText("Your personality type is: " + personalityType);
     }
 }

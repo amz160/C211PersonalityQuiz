@@ -1,4 +1,5 @@
 com\mycompany\personalityquiz\TestResult.class
+com\mycompany\personalityquiz\Questions.class
 module-info.class
 com\mycompany\personalityquiz\Personality.class
 com\mycompany\personalityquiz\PersonalityTrait.class

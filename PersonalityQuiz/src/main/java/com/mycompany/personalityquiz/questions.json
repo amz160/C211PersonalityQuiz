@@ -1,0 +1,86 @@
+[
+ {
+        "questionText": "How do you react in stressful situations?",
+        "answerOptions": ["Stay calm and collected", "Become anxious and worried", "Focus on solving the problem", "Seek help from others"],
+        "correctAnswer": "Stay calm and collected",
+        "associatedTrait": "Resilience"
+    },
+    {
+        "questionText": "Do you prefer spending time alone or with others?",
+        "answerOptions": ["Alone", "With others", "It depends on the situation"],
+        "correctAnswer": "It depends on the situation",
+        "associatedTrait": "Social Adaptability"
+    },
+    {
+        "questionText": "How comfortable are you in large social gatherings?",
+        "answerOptions": ["Very comfortable", "Somewhat comfortable", "Not very comfortable", "Not at all comfortable"],
+        "correctAnswer": "Somewhat comfortable",
+        "associatedTrait": "Social Confidence"
+    },
+    {
+        "questionText": "Do you actively seek out new social connections or are you content with your existing social circle?",
+        "answerOptions": ["Seek out new connections", "Content with existing circle", "Both"],
+        "correctAnswer": "Both",
+        "associatedTrait": "Openness to Experience"
+    },
+    {
+        "questionText": "Do you prefer spontaneous social activities or planned events?",
+        "answerOptions": ["Spontaneous", "Planned", "Either is good"],
+        "correctAnswer": "Either is good",
+        "associatedTrait": "Flexibility"
+    },
+    {
+        "questionText": "How well do you handle difficult emotions?",
+        "answerOptions": ["Very well", "Somewhat well", "Not very well", "Not at all well"],
+        "correctAnswer": "Somewhat well",
+        "associatedTrait": "Emotional Intelligence"
+    },
+    {
+        "questionText": "Are you generally optimistic or pessimistic?",
+        "answerOptions": ["Optimistic", "Pessimistic", "Neutral"],
+        "correctAnswer": "Neutral",
+        "associatedTrait": "Mental Toughness"
+    },
+    {
+        "questionText": "Do you tend to express your emotions openly or keep them bottled up?",
+        "answerOptions": ["Express openly", "Keep them bottled up", "Express to trusted individuals"],
+        "correctAnswer": "Express to trusted individuals",
+        "associatedTrait": "Emotional Authenticity"
+    },
+    {
+        "questionText": "Are you easily influenced by the emotions of others?",
+        "answerOptions": ["Yes, very easily", "Somewhat", "Not very", "Not at all"],
+        "correctAnswer": "Somewhat",
+        "associatedTrait": "Emotional Independence"
+    },
+    {
+        "questionText": "Do you prefer to focus on the positive aspects of life or do you tend to dwell on the negative?",
+        "answerOptions": ["Positive", "Negative", "Both"],
+        "correctAnswer": "Both",
+        "associatedTrait": "Perspective and Growth Mindset"
+    },
+    {
+        "questionText": "Do you rely on logic and analysis when making decisions, or intuition and gut feeling?",
+        "answerOptions": ["Logic and analysis", "Intuition and gut feeling", "Both"],
+        "correctAnswer": "Both",
+        "associatedTrait": "Decision-Making Style"
+    },
+    {
+        "questionText": "Do you prefer to make decisions quickly or take your time to consider all options?",
+        "answerOptions": ["Quickly", "Take my time", "It depends on the decision"],
+        "correctAnswer": "It depends on the decision",
+        "associatedTrait": "Decision-Making Speed"
+    },
+    {
+        "questionText": "How comfortable are you with taking risks and making impulsive choices?",
+        "answerOptions": ["Very comfortable", "Somewhat comfortable", "Not very comfortable", "Not at all comfortable"],
+        "correctAnswer": "Somewhat comfortable",
+        "associatedTrait": "Risk Tolerance"
+    },
+    {
+        "questionText": "Do you prefer working in structured environments with clear deadlines or more flexible and independent work styles?",
+        "answerOptions": ["Structured environments", "Flexible work styles", "Either is good"],
+        "correctAnswer": "Either is good",
+        "associatedTrait": "Adaptability"
+    }
+]
