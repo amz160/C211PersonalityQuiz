@@ -23,7 +23,7 @@ public enum PersonalityTrait {
     DECISIONMAKINGSTYLE("Decision-Making Style", "The approach you take in making choices, whether analytical or intuitive."),
     DECISIONMAKINGSPEED("Decision-Making Speed", "The pace at which you make decisions, whether quickly or thoughtfully."),
     RISKTOLERANCE("Risk Tolerance", "The comfort level with taking risks and making impulsive choices."),
-    ADAPTABILITY("Adaptability", "The capacity to adjust to different environments and situations."), ;
+    ADAPTABILITY("Adaptability", "The capacity to adjust to different environments and situations.");
 
     private String displayName;
     private String description;
