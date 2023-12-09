@@ -5,12 +5,26 @@
 This project implements a Java-based personality quiz to determine whether a user is more of an introvert or an extrovert. It presents users with questions, analyzes their answers, and concludes their personality type.
 
 ## Class Structure
-* **PersonalityAssessmentAPP:** Handles the graphical user interface for the quiz, displaying questions and results.
-* **Personality:** Represents a person's personality, storing details like name, age, and personality type.
-* **PersonalityTrait:** Manages the traits associated with personality types.
-* **Personality Assessment:** Produces the quiz, manages questions, and calculates results.
-* **Question:** Represents a quiz question and its associated answers and traits.
-* **TestResult:** Stores the user's answers and scores for each question.
+* **PersonalityAssessmentApp (Main Application Class)::**
+  * Responsible for initializing the JavaFX application.
+  * Manages the stages and scenes for the welcome, quiz, and result screens.
+  * Handles user interactions and displays relevant information.
+* **Personality:**
+  * Represents a person's personality; storing answers.
+  * Represents the backend of the personality assessment.
+  * Stores a list of questions and personality types.
+  * Records user answers and calculates the dominant personality trait.
+* **Question:**
+  * Defines a question in the personality quiz.
+  * Includes the question text, answer options, associated trait, and answer scores.
+* **Questions:**
+  * Provides a utility class for creating a sample set of questions for the quiz.
+* **TestResult:**
+  * Represents a user's response to a specific question.
+  * Associates a question, selected answer, and score.
+* **PersonalityTrait (Enum):**
+  * Enumerates various personality traits with display names and descriptions.
+
 
 ## Screenshots
 ![image](https://github.com/amz160/C211PersonalityQuiz/assets/147431750/66ff234b-386f-4f1c-831d-8ef7772e454c)
