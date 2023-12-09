@@ -1,8 +1,8 @@
-# C211PersonalityQuiz: Introvert or Extrovert Assessment
+# C211PersonalityQuiz: Personality Assessment
 **Team 2:** Amstrong Akendung, Mario Garcilazo, and Alyssa Martinez  
 
 ## Description
-This project implements a Java-based personality quiz to determine whether a user is more of an introvert or an extrovert. It presents users with questions, analyzes their answers, and concludes their personality type.
+This project implements a Java-based personality quiz to determine a user's personality type. It presents users with questions, analyzes their answers, and concludes their personality type.
 
 ## Class Structure
 * **PersonalityAssessmentApp (Main Application Class)::**
