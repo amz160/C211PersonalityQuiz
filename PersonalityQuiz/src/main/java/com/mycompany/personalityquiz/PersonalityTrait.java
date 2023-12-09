@@ -10,19 +10,31 @@ package com.mycompany.personalityquiz;
  */
 
 public enum PersonalityTrait {
-    OPENNESS_TO_EXPERIENCE("Openness to Experience", "Description for openness to experience"),
-    INTROVERSION_EXTROVERSION("Introversion/Extroversion", "Description for introversion/extroversion");
-    
-    private final String name;
+    RESILIENCE("Resilience", "The ability to bounce back from setbacks and remain positive."),
+    SOCIALADAPTABILITY("Social Adaptability", "The ease with which you adjust to various social situations."),
+    SOCIALCONFIDENCE("Social Confidence", "The level of assurance in social interactions and gatherings."),
+    OPENNESSTOEXPERIENCE("Openness to Experience", "The willingness to explore new ideas and embrace change."),
+    FLEXIBILITY("Flexibility", "The ability to adapt and adjust to changing circumstances."),
+    EMOTIONALINTELLIGENCE("Emotional Intelligence", "The capability to recognize and manage emotions effectively."),
+    MENTALTOUGHNESS("Mental Toughness", "The resilience to cope with challenges and pressure."),
+    EMOTIONALAUTHENTICITY("Emotional Authenticity", "The degree to which you express genuine emotions."),
+    EMOTIONALINDEPENDENCE("Emotional Independence", "The ability to maintain emotional autonomy."),
+    PERSPECTIVEANDGROWTHMINDSET("Perspective and Growth Mindset", "The tendency to focus on positive aspects and embrace personal growth."),
+    DECISIONMAKINGSTYLE("Decision-Making Style", "The approach you take in making choices, whether analytical or intuitive."),
+    DECISIONMAKINGSPEED("Decision-Making Speed", "The pace at which you make decisions, whether quickly or thoughtfully."),
+    RISKTOLERANCE("Risk Tolerance", "The comfort level with taking risks and making impulsive choices."),
+    ADAPTABILITY("Adaptability", "The capacity to adjust to different environments and situations."), ;
+
+    private final String displayName;
     private final String description;
 
-    PersonalityTrait(String name, String description) {
-        this.name = name;
+    PersonalityTrait(String displayName, String description) {
+        this.displayName = displayName;
         this.description = description;
     }
 
-    public String getName() {
-        return name;
+    public String getDisplayName() {
+        return displayName;
     }
 
     public String getDescription() {

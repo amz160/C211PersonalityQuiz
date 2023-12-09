@@ -6,9 +6,6 @@ package com.mycompany.personalityquiz;
  */
 
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,60 +19,63 @@ public class PersonalityAssessment {
 
     private final List<Question> questions;
     private final Map<String, PersonalityTrait> personalityTypes;
-    private final List<TestResult> takenAssessment;
+    private List<TestResult> takenAssessment;
 
     public PersonalityAssessment() {
-        this.questions = new ArrayList<>(); // Initialize empty list of questions
-        this.personalityTypes = new HashMap<>(); // Initialize empty map of personality types
-        this.takenAssessment = new ArrayList<>(); // Initialize empty list of recorded answers
-    }
-
-    public void addQuestion(Question question) {
-        questions.add(question); // Add question to the list
+        this.questions = new Questions().createSampleQuestions();
+        this.personalityTypes = new HashMap<>();
+        this.takenAssessment = new ArrayList<>();
     }
 
     public void addPersonalityType(String personalityType, PersonalityTrait trait) {
-        personalityTypes.put(personalityType, trait); // Add personality type with its associated trait
+        personalityTypes.put(personalityType, trait);
     }
 
     public List<Question> getQuestions() {
-        return questions; // Return the list of questions
+        return questions;
     }
 
     public List<TestResult> takeAssessment() {
-        return takenAssessment; // Return the list of recorded answers for further analysis
+        if (takenAssessment == null) {
+            takenAssessment = new ArrayList<>();
+        }
+        return takenAssessment;
+    }
+
+    public void recordAnswer(Question question, String userAnswer) {
+        takenAssessment.add(new TestResult(question, userAnswer));
     }
 
     public String calculatePersonalityType() {
-        // Analyze recorded answers and calculate personality type based on associated traits
-        // Analyze recorded answers and calculate personality type based on associated traits
-        Map<String, Integer> traitCounts = new HashMap<>();
+        Map<PersonalityTrait, Integer> traitScores = new HashMap<>();
 
+        // Calculate total scores for each trait
         for (TestResult result : takenAssessment) {
-            // String traitName = result.getQuestion().getAssociatedTrait();
-            // traitCounts.put(traitName, traitCounts.getOrDefault(traitName, 0) + 1);
+            Question question = result.getQuestion();
+            PersonalityTrait trait = question.getAssociatedTrait();
+            Map<String, Integer> answerScores = question.getAnswerScores();
+
+            int userScore = answerScores.getOrDefault(result.getAnswer(), 0);
+            traitScores.put(trait, traitScores.getOrDefault(trait, 0) + userScore);
         }
 
-        // Find the trait with the highest count
-        int maxCount = 0;
-        String dominantTrait = null;
+        // Find the trait with the highest total score
+        int maxScore = 0;
+        PersonalityTrait dominantTrait = null;
 
-        for (Map.Entry<String, Integer> entry : traitCounts.entrySet()) {
-            if (entry.getValue() > maxCount) {
-                maxCount = entry.getValue();
+        for (Map.Entry<PersonalityTrait, Integer> entry : traitScores.entrySet()) {
+            if (entry.getValue() > maxScore) {
+                maxScore = entry.getValue();
                 dominantTrait = entry.getKey();
             }
         }
 
         // Look up the personality type associated with the dominant trait
         if (dominantTrait != null) {
-            PersonalityTrait personalityTrait = personalityTypes.get(dominantTrait);
-            if (personalityTrait != null) {
-                return personalityTrait.getName();
-            }
+            return dominantTrait.getDisplayName();
         }
 
         // Return a default value if no dominant trait is found
         return "Unknown Personality Type";
-        }
+    }
 }

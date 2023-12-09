@@ -5,6 +5,7 @@
 package com.mycompany.personalityquiz;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -12,15 +13,15 @@ import java.util.List;
  */
 public class Question {
     
-    private final String questionText;
-    private final List<String> answerOptions;
-    private final String correctAnswer;
-    private final PersonalityTrait associatedTrait;
+    private String questionText;
+    private List<String> answerOptions;
+    private Map<String, Integer> answerScores;
+    private PersonalityTrait associatedTrait;
 
-    public Question(String questionText, List<String> answerOptions, String correctAnswer, PersonalityTrait associatedTrait) {
+    public Question(String questionText, List<String> answerOptions, Map<String, Integer> answerScores, PersonalityTrait associatedTrait) {
         this.questionText = questionText;
         this.answerOptions = answerOptions;
-        this.correctAnswer = correctAnswer;
+        this.answerScores = answerScores;
         this.associatedTrait = associatedTrait;
     }
 
@@ -32,12 +33,14 @@ public class Question {
         return answerOptions;
     }
 
-    public String getCorrectAnswer() {
-        return correctAnswer;
-    }
+
 
     public PersonalityTrait getAssociatedTrait() {
         return associatedTrait;
+    }
+    
+     public Map<String, Integer> getAnswerScores() {
+        return answerScores;
     }
     
 }

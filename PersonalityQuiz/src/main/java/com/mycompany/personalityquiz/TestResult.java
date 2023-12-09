@@ -9,34 +9,19 @@ package com.mycompany.personalityquiz;
  * @author mario.garcilazo
  */
 public class TestResult {
-
     private final Question question;
-    private final String userAnswer;
-    private final int score; // Score obtained for the user's answer
+    private final String answer;
 
-    public TestResult(Question question, String userAnswer) {
+    public TestResult(Question question, String answer) {
         this.question = question;
-        this.userAnswer = userAnswer;
-        this.score = calculateScore(); // Calculate score based on answer and question
-    }
-
-    private int calculateScore() {
-        // Implement logic to calculate score based on user's answer and the correct answer
-        // This could involve assigning points based on answer correctness or using other scoring methods
-        // ...
-
-        return 0; // Replace with actual calculated score
+        this.answer = answer;
     }
 
     public Question getQuestion() {
         return question;
     }
 
-    public String getUserAnswer() {
-        return userAnswer;
-    }
-
-    public int getScore() {
-        return score;
+    public String getAnswer() {
+        return answer;
     }
 }
