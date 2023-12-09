@@ -5,7 +5,7 @@
 This project implements a Java-based personality quiz to determine a user's personality type. It presents users with questions, analyzes their answers, and concludes their personality type.
 
 ## Class Structure
-* **PersonalityAssessmentApp (Main Application Class)::**
+* **PersonalityAssessmentApp (Main Application Class):**
   * Responsible for initializing the JavaFX application.
   * Manages the stages and scenes for the welcome, quiz, and result screens.
   * Handles user interactions and displays relevant information.
