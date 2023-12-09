@@ -25,8 +25,8 @@ public enum PersonalityTrait {
     RISKTOLERANCE("Risk Tolerance", "The comfort level with taking risks and making impulsive choices."),
     ADAPTABILITY("Adaptability", "The capacity to adjust to different environments and situations."), ;
 
-    private final String displayName;
-    private final String description;
+    private String displayName;
+    private String description;
 
     PersonalityTrait(String displayName, String description) {
         this.displayName = displayName;
@@ -39,5 +39,15 @@ public enum PersonalityTrait {
 
     public String getDescription() {
         return description;
+    }
+    
+    // New method to get description by personality type
+    public static String getDescriptionByType(String personalityType) {
+        for (PersonalityTrait trait : values()) {
+            if (trait.displayName.equals(personalityType)) {
+                return trait.description;
+            }
+        }
+        return "No description available.";
     }
 }
