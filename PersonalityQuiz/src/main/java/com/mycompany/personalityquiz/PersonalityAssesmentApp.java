@@ -1,12 +1,13 @@
 package com.mycompany.personalityquiz;
 
 import javafx.application.Application;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -23,8 +24,8 @@ public class PersonalityAssesmentApp extends Application {
     private PersonalityAssessment assessment;
     private List<Question> questions;
     private int currentQuestionIndex;
-
     private Label questionLabel;
+    private Label progressLabel;
     private List<Button> answerButtons;
     private Button submitButton;
     private Button returnToStartButton;
@@ -35,26 +36,22 @@ public class PersonalityAssesmentApp extends Application {
         questions = new Questions().createSampleQuestions();
         currentQuestionIndex = 0;
 
-        // Create a welcome layout with intro and start button
-        BorderPane welcomePane = new BorderPane();
-        Label introLabel = new Label("Welcome to the Personality Assessment Quiz!");
-        Button startButton = new Button("Take the Quiz");
-
-        // Configure welcome layout elements
-        introLabel.setFont(Font.font(24));
-        introLabel.setAlignment(Pos.CENTER);
-
-        startButton.setOnAction(e -> startQuiz(stage));
-
-        welcomePane.setTop(introLabel);
-        BorderPane.setAlignment(introLabel, Pos.CENTER);
-        welcomePane.setCenter(startButton);
-        BorderPane.setAlignment(startButton, Pos.CENTER);
-
-        Scene welcomeScene = new Scene(welcomePane, 600, 300);
+        Scene welcomeScene = createWelcomeScene(stage);
         stage.setScene(welcomeScene);
         stage.setTitle("Personality Assessment");
         stage.show();
+    }
+
+    private Scene createWelcomeScene(Stage stage) {
+        // New layout for the welcome screen using VBox
+        VBox welcomeLayout = new VBox(20);
+        welcomeLayout.setAlignment(Pos.CENTER);
+        Label introLabel = new Label("Welcome to the Personality Assessment Quiz!");
+        introLabel.setFont(Font.font(24));
+        Button startButton = new Button("Take the Quiz");
+        startButton.setOnAction(e -> startQuiz(stage));
+        welcomeLayout.getChildren().addAll(introLabel, startButton);
+        return new Scene(welcomeLayout, 600, 300);
     }
 
     private void startQuiz(Stage stage) {
@@ -81,39 +78,51 @@ public class PersonalityAssesmentApp extends Application {
         stage.setTitle("Personality Assessment - Quiz");
         stage.show();
     }
-
     private void displayNextQuestion(GridPane layout, Stage stage) {
         if (currentQuestionIndex < questions.size()) {
             Question currentQuestion = questions.get(currentQuestionIndex);
             questionLabel.setText(currentQuestion.getQuestionText());
 
             // Clear previous answer buttons
-            answerButtons.forEach(layout.getChildren()::remove);
-            answerButtons.clear();
-
+            layout.getChildren().removeAll(answerButtons);
+            if (progressLabel != null) {
+                layout.getChildren().remove(progressLabel);
+            }
+    
             // Create and add answer buttons
             List<String> answerOptions = currentQuestion.getAnswerOptions();
             for (int i = 0; i < answerOptions.size(); i++) {
                 String option = answerOptions.get(i);
-                Button answerButton = new Button(option);
-                answerButton.setOnAction(event -> {
-                    assessment.recordAnswer(currentQuestion, option);
-                    printAnswer(currentQuestion, option);
-                    currentQuestionIndex++; // Increment question index
-                    displayNextQuestion(layout, stage); // Update UI
-                });
+                Button answerButton = createAnswerButton(option, layout, stage);
                 answerButtons.add(answerButton);
                 layout.add(answerButton, 0, i + 1);
+                GridPane.setHalignment(answerButton, HPos.CENTER);
             }
 
+            // Add progress indicator label
+            progressLabel = new Label("Question " + (currentQuestionIndex + 1) + " of " + questions.size());
+            layout.add(progressLabel, 0, answerOptions.size() + 2);
+            GridPane.setHalignment(progressLabel, HPos.CENTER);
+    
             // Add action listener to submit button
             if (currentQuestionIndex == questions.size() - 1) {
                 layout.add(submitButton, 0, answerOptions.size() + 1);
-                submitButton.setOnAction(event -> {
-                    calculatePersonalityTypeAndDisplayResults(stage); // Show final results
-                });
+                submitButton.setStyle("-fx-font-weight: bold;");
+                GridPane.setHalignment(submitButton, HPos.CENTER);
+                submitButton.setOnAction(event -> calculatePersonalityTypeAndDisplayResults(stage));
             }
         }
+    }
+    
+    private Button createAnswerButton(String option, GridPane layout, Stage stage) {
+        Button answerButton = new Button(option);
+        answerButton.setOnAction(event -> {
+            assessment.recordAnswer(questions.get(currentQuestionIndex), option);
+            printAnswer(questions.get(currentQuestionIndex), option);
+            currentQuestionIndex++; // Increment question index
+            displayNextQuestion(layout, stage); // Update UI
+        });
+        return answerButton;
     }
 
     private void calculatePersonalityTypeAndDisplayResults(Stage stage) {
