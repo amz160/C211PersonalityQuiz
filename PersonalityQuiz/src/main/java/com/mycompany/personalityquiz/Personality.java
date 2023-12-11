@@ -5,7 +5,7 @@
 package com.mycompany.personalityquiz;
 
 /**
- *
+ * Team 2:
  * @author mario.garcilazo
  */
 public class Personality {
